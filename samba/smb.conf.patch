@@ -1,0 +1,41 @@
+--- /etc/samba/smb.conf	2012-11-12 16:45:32.000000000 +0200
++++ /ets/samba/smb.conf	2012-11-12 16:45:49.000000000 +0200
+@@ -32,6 +32,8 @@
+ 
+ [global]
+ 
++   unix extensions = no
++
+ ## Browsing/Identification ###
+ 
+ # Change this to the workgroup/NT-domain name your Samba server will part of
+@@ -239,15 +241,15 @@
+ 
+ # By default, the home directories are exported read-only. Change the
+ # next parameter to 'no' if you want to be able to write to them.
+-   read only = yes
++   read only = no
+ 
+ # File creation mask is set to 0700 for security reasons. If you want to
+ # create files with group=rw permissions, set next parameter to 0775.
+-   create mask = 0700
++   create mask = 0644
+ 
+ # Directory creation mask is set to 0700 for security reasons. If you want to
+ # create dirs. with group=rw permissions, set next parameter to 0775.
+-   directory mask = 0700
++   directory mask = 0755
+ 
+ # By default, \\server\username shares can be connected to by anyone
+ # with access to the samba server.
+@@ -256,6 +258,10 @@
+ # This might need tweaking when using external authentication schemes
+    valid users = %S
+ 
++#  For eclipse to follow and understand soft links
++   wide links = yes
++   follow symlinks = yes
++
+ # Un-comment the following and create the netlogon directory for Domain Logons
+ # (you need to configure Samba to act as a domain controller too.)
+ ;[netlogon]
