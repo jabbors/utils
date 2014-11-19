@@ -1,0 +1,13 @@
+syntax on
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set cindent
+set encoding=utf-8
+
+filetype plugin on
+filetype indent on
+set autoindent
+set hlsearch
+set term=xterm
