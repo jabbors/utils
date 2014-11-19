@@ -1,0 +1,6 @@
+# exports
+export PS1='\u:\W$ '
+export EDITOR=vim
+export TERM=linux
+export DEBEMAIL="jabbors@gmail.com"
+export DEBFULLNAME="Johan Abbors"
