@@ -1,3 +1,6 @@
 # aliases
 alias devenv="sudo arkose -n -h"
 alias gk='gitk --all &'
+
+# edit remote file locally
+alias rsub='rmate -p 52699'
