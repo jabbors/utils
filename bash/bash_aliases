@@ -4,3 +4,7 @@ alias gk='gitk --all &'
 
 # edit remote file locally
 alias rsub='rmate -p 52699'
+
+alias ssx='ssh -X'
+# ssh compression and blowfish encrpytion for faster throughput
+alias sscx='ssh -C -X -c blowfish'
