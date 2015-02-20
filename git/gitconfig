@@ -1,16 +1,16 @@
 [user]
-	email = jabbors@gmail.com
-	name = Johan Abbors
+    email = jabbors@gmail.com
+    name = Johan Abbors
 [alias]
-	lol = log --graph --decorate --pretty=oneline --abbrev-commit
-	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-	uno = status -uno
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    uno = status -uno
     subclean = submodule foreach "git clean -xdf"
     subfetch = submodule foreach "git fetch -p"
     subpull = submodule foreach "git pull"
     subcomaster = submodule foreach "git checkout master"
 [color]
-	branch = auto
-	diff = auto
-	interactive = auto
-	status = auto
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
