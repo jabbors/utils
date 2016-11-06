@@ -11,3 +11,7 @@ alias gocls="rm -rf $GOPATH/pkg/*"
 alias ssx='ssh -X'
 # ssh compression and blowfish encrpytion for faster throughput
 alias sscx='ssh -C -X -c blowfish'
+
+alias prettyjson='python -m json.tool'
+alias sumcol='paste -sd+ - | bc'
+alias zcat='gunzip -c'
