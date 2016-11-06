@@ -15,3 +15,24 @@ alias sscx='ssh -C -X -c blowfish'
 alias prettyjson='python -m json.tool'
 alias sumcol='paste -sd+ - | bc'
 alias zcat='gunzip -c'
+
+_ffmpeg_concat()
+{
+    if [ $# -lt 3 ]; then
+        echo "usage: ffmpeg-concat <part1> <part2> <output>"
+        return
+    fi
+    if [ ! -f "$1" ]; then
+        echo "error: file '$1' does not exist"
+        return
+    fi
+    if [ ! -f "$2" ]; then
+        echo "error: file '$2' does not exist"
+        return
+    fi
+    echo "file $1" > input.txt
+    echo "file $2" >> input.txt
+    ffmpeg -f concat -i input.txt -codec copy "$3"
+    rm input.txt
+}
+alias "ffmpeg-concat"="_ffmpeg_concat"
