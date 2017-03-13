@@ -36,3 +36,67 @@ _ffmpeg_concat()
     rm input.txt
 }
 alias "ffmpeg-concat"="_ffmpeg_concat"
+
+_list_intersect()
+{
+    index_left=-1
+    index_right=-1
+    array_left=()
+    array_right=()
+    for i in $@
+    do
+        if [ "$i" = "-l" ]; then
+            index_left=0
+            continue
+        fi
+        if [ "$i" = "-r" ]; then
+            index_right=0
+            continue
+        fi
+        if [ $index_right -ge 0 ]; then
+            array_right[$index_right]=$i
+            index_right=$(($index_right + 1))
+        elif [ $index_left -ge 0 ]; then
+            array_left[$index_left]=$i
+            index_left=$(($index_left + 1))
+        fi
+    done
+
+    if [ ${#array_left[@]} -eq 0 ] || [ ${#array_right[@]} -eq 0 ]; then
+        echo "usage: list-intersect -l <elem> <elem> <elem> -r <elem> <elem>"
+        return
+    fi
+
+    # find the intersections
+    delete_left=()
+    delete_right=()
+    intersect=()
+    for i in "${!array_left[@]}"
+    do
+        for j in "${!array_right[@]}"
+        do
+            if [ "${array_left[$i]}" = "${array_right[$j]}" ]; then
+                delete_left+=($i)
+                delete_right+=($j)
+                intersect+=(${array_left[$i]})
+            fi
+        done
+    done
+
+    # delete items from left and right
+    for i in "${delete_left[@]}"
+    do
+        unset array_left[$i]
+    done
+    for j in "${delete_right[@]}"
+    do
+        unset array_right[$j]
+    done
+
+    # echo results
+    echo "intersection:  ${intersect[*]}"
+    echo "unique left :  ${array_left[*]}"
+    echo "unique right:  ${array_right[*]}"
+}
+
+alias "list-intersect"="_list_intersect"
