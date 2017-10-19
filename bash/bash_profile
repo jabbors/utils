@@ -1,0 +1,29 @@
+case $OSTYPE in
+    darwin*)
+        if [ -f $(brew --prefix)/etc/bash_completion ]; then
+            . $(brew --prefix)/etc/bash_completion
+        fi
+
+        export CLICOLOR=1
+        #export LSCOLORS=GxFxCxDxBxegedabagaced # default
+        export LSCOLORS=ExFxCxDxBxegedabagacad # stack overflow
+        #export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx # stack overflow with black background
+
+        # make it easier to spot which branch you're on
+        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[31m\]$("__git_ps1") \[\033[00m\]\$ '
+        ;;
+    linux*)
+        export PS1='\u:\W$ '
+        export EDITOR=vim
+        export TERM=linux
+        export DEBEMAIL="jabbors@gmail.com"
+        export DEBFULLNAME="Johan Abbors"
+esac
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+if [ -f ~/.z.sh ]; then
+    . ~/.z.sh
+fi
