@@ -14,3 +14,6 @@
     diff = auto
     interactive = auto
     status = auto
+
+[url "git@github.com:Walkbase"]
+    insteadOf = https://github.com/Walkbase
