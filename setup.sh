@@ -6,7 +6,7 @@ SCRIPTPATH=$(dirname $SCRIPT)
 # setup bash
 echo "setting up bash_aliases"
 test -L ~/.bash_aliases && echo "already setup"
-test -L ~/.bash_aliases || ln -s $SCRIPTPATH/bash/bash_aliases/ ~/.bash_aliases
+test -L ~/.bash_aliases || ln -s $SCRIPTPATH/bash/bash_aliases ~/.bash_aliases
 echo "setting up bash_profile"
 test -L ~/.bash_profile && echo "already setup"
 test -L ~/.bash_profile || ln -s $SCRIPTPATH/bash/bash_profile ~/.bash_profile
