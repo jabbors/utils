@@ -1,0 +1,8 @@
+{
+    "root-dir": "/srv/datadisk/recordings",
+    "last-mod-time": 90,
+    "skip-list": [
+        "xyz",
+        "abc"
+    ]
+}
