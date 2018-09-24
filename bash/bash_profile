@@ -29,3 +29,9 @@ fi
 if [ -f ~/.z.sh ]; then
     . ~/.z.sh
 fi
+
+if [ -f ~/.xsh.sh ]; then
+    . ~/.z.xsh
+fi
+
+export PATH="$PATH:$HOME/go/bin"
