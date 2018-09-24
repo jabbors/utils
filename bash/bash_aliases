@@ -16,6 +16,38 @@ alias prettyjson='python -m json.tool'
 alias sumcol='paste -sd+ - | bc'
 alias zcat='gunzip -c'
 
+_brew_remove() {
+    if [ $# -eq 0 ]; then
+        echo "usage: brew-remove FORMULA"
+        return
+    fi
+    read -p "Remove package $1? (yes/no): " REMOVE
+    if [[ $REMOVE == [Yy] || $REMOVE == [Yy][Ee][Ss] ]]; then
+        brew rm $1
+    else
+        return
+    fi
+    echo -n "Remove dependencies '"
+    echo -n $(join <(brew leaves) <(brew deps $1))
+    echo -n "'? (yes/no): "
+    read -p "" REMOVE
+    if [[ $REMOVE == [Yy] || $REMOVE == [Yy][Ee][Ss] ]]; then
+        brew rm $(join <(brew leaves) <(brew deps $1))
+    else
+        return
+    fi
+}
+_brew_deps() {
+    if [ $# -eq 0 ]; then
+        echo "usage: brew-deps FORMULA"
+        return
+    fi
+    echo -n "Orphaned dependencies for $1: "
+    echo $(join <(brew leaves) <(brew deps $1))
+}
+alias "brew-remove"="_brew_remove"
+alias "brew-deps"="_brew_deps"
+
 _ffmpeg_concat()
 {
     if [ $# -lt 3 ]; then
